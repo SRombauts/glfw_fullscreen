@@ -8,7 +8,7 @@ project(glfw_fullscreen)
 
 # Define useful variables to handle OS/Compiler differences
 if (MSVC)
-    set(SYSTEM_LIBRARIES        "")
+    set(SYSTEM_LIBRARIES        opengl32.lib)
     # disable Visual Studio usual warnings
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 elseif (CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
