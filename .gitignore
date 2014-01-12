@@ -4,8 +4,6 @@ build
 lib
 glfw_fullscreen
 doc
-config.h
-freeglut.pc
 
 CMakeCache.txt
 CMakeFiles
