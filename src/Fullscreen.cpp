@@ -232,14 +232,22 @@ int main(void) {
     // Ask for vertical synch (not working)
     // glfwSwapInterval(1);
 
-    // get the current Desktop screen resolution and colour depth
-    const GLFWvidmode* pCurrentVideoMod = glfwGetVideoMode(glfwGetPrimaryMonitor());
+    // get the list of monitors (at least one monitor shall be detected)
+    int monitorCount = 0;
+    GLFWmonitor** pMonitorList = glfwGetMonitors (&monitorCount);
+    assert(0 < monitorCount); 
+    // if there is only one monitor, use it, but if there is more than one, use the last one
+    // (Oculus Rift is expected to be the second monitor, extending the primary one
+    GLFWmonitor* pMonitor = pMonitorList[monitorCount-1];
+
+    // get the current screen resolution and colour depth of the choosen monitor
+    const GLFWvidmode* pCurrentVideoMod = glfwGetVideoMode(pMonitor);
     int width = pCurrentVideoMod->width;
     int height = pCurrentVideoMod->height;
     std::cout << "fullscreen (" << width << " x " << height << ")\n";
 
-    // Open a fullscreen window on the first monitor
-    window = glfwCreateWindow(width, height, "Simple example", glfwGetPrimaryMonitor(), NULL);
+    // Open a fullscreen window on the last monitor
+    window = glfwCreateWindow(width, height, "Simple example", pMonitor, NULL);
     if (!window) {
         glfwTerminate();
         exit(EXIT_FAILURE);
