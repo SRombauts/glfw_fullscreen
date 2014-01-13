@@ -257,7 +257,7 @@ int main(void) {
 
     glfwGetFramebufferSize(window, &width, &height);
     glViewport(0, 0, width, height);
-    std::cout << "fullscreen (" << width << " x " << height << ")\n";
+    // std::cout << "fullscreen (" << width << " x " << height << ")\n";
 
     double currTime = glfwGetTime();
     double prevTime = currTime;
@@ -268,7 +268,7 @@ int main(void) {
 
         currTime = glfwGetTime();
         float ellapsedTime = static_cast<float>(currTime - prevTime);
-        std::cout << "ellapsedTime=" << ellapsedTime << std::endl;
+        // std::cout << "ellapsedTime=" << ellapsedTime << std::endl;
 
         // move the rectangles based on ellapsed time
         for (Rectangle::Vector::iterator iRectangle  = rectangles.begin();
