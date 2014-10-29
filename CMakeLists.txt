@@ -12,7 +12,7 @@ if (MSVC)
     # disable Visual Studio usual warnings
     add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 elseif (CMAKE_COMPILER_IS_GNUCC OR CMAKE_COMPILER_IS_GNUCXX)
-    set(SYSTEM_LIBRARIES        GL Xrandr Xi)
+    set(SYSTEM_LIBRARIES        GL Xrandr Xi X11 Xxf86vm pthread)
 endif ()
 
 ## Core source code ##
